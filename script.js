@@ -19,5 +19,8 @@ function getHumanChoice() {
     let answer = prompt("Choose Rock, Paper or Scissors!")
     return answer
 }
+function playRound(humanChoice, computerChoice) {
+    
+}
 console.log(getComputerChoice())
 console.log(getHumanChoice())
