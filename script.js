@@ -70,14 +70,18 @@ function playRound(humanChoice, computerChoice) {
                     humanScore++;
                 }
                 if(humanChoice === "scissors") {
+                    const resultsSentence = document.createElement("div")
+                    resultsSentence.textContent = "You lose! "+ humanChoice + " loses to " + computerChoice
+                    resultsDiv.appendChild(resultsSentence)
                     computerScore++;
-                    console.log("You lose! " + humanChoice + " loses to " + computerChoice)
                 }
                 break
             }
             case "paper": {
                 if(humanChoice === "scissors"){
-                    console.log("You win! "+ humanChoice + " beats " + computerChoice)
+                    const resultsSentence = document.createElement("div")
+                    resultsSentence.textContent = "You win! "+ humanChoice + " beats " + computerChoice
+                    resultsDiv.appendChild(resultsSentence)
                     humanScore++;
                 }
                 if(humanChoice === "rock") {
@@ -96,8 +100,10 @@ function playRound(humanChoice, computerChoice) {
                     humanScore++;
                 }
                 if(humanChoice === "paper") {
+                    const resultsSentence = document.createElement("div")
+                    resultsSentence.textContent = "You lose! "+ humanChoice + " loses to " + computerChoice
+                    resultsDiv.appendChild(resultsSentence)
                     computerScore++;
-                    console.log("You lose! " + humanChoice + " loses to " + computerChoice)
                 }
                 break
     }
