@@ -1,4 +1,6 @@
 
+let humanScore = 0
+let computerScore = 0
 function getComputerChoice() {
     
     let computerChoice = ""
@@ -13,11 +15,31 @@ function getComputerChoice() {
     }
     return computerChoice
 }
-function getHumanChoice() {
-    let answer = prompt("Choose Rock, Paper or Scissors!").toLowerCase()
-    answer.trim()
-    return answer
+    const optionContainer = document.querySelector("#button-container")
+    optionContainer.addEventListener("click", (event) => {
+
+        let target = event.target
+        console.log(target.id)
+        switch(target.id) {
+            case "rock": {
+                playRound(target.id, getComputerChoice())
+                break
 }
+            case "paper": {
+                playRound(target.id, getComputerChoice())
+                break
+}
+            case "scissors": {
+                playRound(target.id, getComputerChoice())
+                break
+}
+
+default: {
+    console.log("No match found")
+}
+}
+ }
+)
 function playRound(humanChoice, computerChoice) {
 
     let answerSet = []
@@ -68,17 +90,13 @@ function playRound(humanChoice, computerChoice) {
                 }
                 break
     }
+    default: {
+        console.log("No match found in playround")
+        console.log(humanChoice, computerChoice)
+    }
 }
     }
 
-let humanScore = 0
-let computerScore = 0
-    function playGame() {
-for(i = 0; i<5;i++){
-    playRound(getHumanChoice(),getComputerChoice())
-}
-    }
 
-    playGame()
 console.log("computerscore: " +computerScore)
 console.log("humanscore: " + humanScore)
