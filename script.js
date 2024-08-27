@@ -19,7 +19,6 @@ function getComputerChoice() {
     optionContainer.addEventListener("click", (event) => {
 
         let target = event.target
-        console.log(target.id)
         switch(target.id) {
             case "rock": {
                 playRound(target.id, getComputerChoice())
@@ -40,7 +39,11 @@ default: {
 }
  }
 )
+
+
+
 function playRound(humanChoice, computerChoice) {
+    const resultsDiv = document.querySelector("#results-div")
 
     let answerSet = []
     answerSet[0] = "rock"
@@ -51,7 +54,9 @@ function playRound(humanChoice, computerChoice) {
         return
     }
     if(computerChoice === humanChoice) {
-        console.log("Draw!!! You and the computer chose: " + computerChoice)
+        const resultsSentence = document.createElement("div")
+        resultsSentence.textContent = "Draw!!! You and the computer chose: " + computerChoice
+        resultsDiv.appendChild(resultsSentence)
         return
     }
 
@@ -59,7 +64,9 @@ function playRound(humanChoice, computerChoice) {
         switch (computerChoice) {
             case "rock": {
                 if(humanChoice === "paper") {
-                    console.log("You win! "+ humanChoice + " beats " + computerChoice)
+                    const resultsSentence = document.createElement("div")
+                    resultsSentence.textContent = "You win! "+ humanChoice + " beats " + computerChoice
+                    resultsDiv.appendChild(resultsSentence)
                     humanScore++;
                 }
                 if(humanChoice === "scissors") {
@@ -74,14 +81,18 @@ function playRound(humanChoice, computerChoice) {
                     humanScore++;
                 }
                 if(humanChoice === "rock") {
-                    console.log("You lose! " + humanChoice + " loses to " + computerChoice)
+                    const resultsSentence = document.createElement("div")
+                    resultsSentence.textContent = "You lose! "+ humanChoice + " loses to " + computerChoice
+                    resultsDiv.appendChild(resultsSentence)
                     computerScore++;
                 }
                 break
         }
             case "scissors": {
                 if(humanChoice === "rock") {
-                    console.log("You win! "+ humanChoice + " beats " + computerChoice)
+                    const resultsSentence = document.createElement("div")
+                    resultsSentence.textContent = "You win! "+ humanChoice + " beats " + computerChoice
+                    resultsDiv.appendChild(resultsSentence)
                     humanScore++;
                 }
                 if(humanChoice === "paper") {
@@ -95,7 +106,26 @@ function playRound(humanChoice, computerChoice) {
         console.log(humanChoice, computerChoice)
     }
 }
+
+    const scoreDiv = document.querySelector("#scores")
+    scoreDiv.textContent = "Your Score: " + humanScore + "    Computer Score: " + computerScore
+    if(humanScore >= 5 || computerScore >= 5) {
+        const winnerDiv = document.createElement("div")
+        let winner = humanScore>computerScore ? "You": "Computer"
+        console.log(winner)
+        winnerDiv.textContent = winner + " won the Game by reaching 5 points first!!" 
+        winnerDiv.style.cssText = "font-size: 48px; font-weight: bold;"
+        resultsDiv.appendChild(winnerDiv)
+        humanScore = 0
+        computerScore = 0
+    const scoreDiv = document.querySelector("#scores")
+    scoreDiv.textContent = "Your Score: " + humanScore + "    Computer Score: " + computerScore
     }
+    }
+
+    const scoreDiv = document.querySelector("#scores")
+    scoreDiv.textContent = "Your Score: " + humanScore + "    Computer Score: " + computerScore
+
 
 
 console.log("computerscore: " +computerScore)
